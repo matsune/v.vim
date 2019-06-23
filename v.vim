@@ -4,6 +4,36 @@ endif
 
 syn case match
 
+syn keyword     vDirective        module import
+syn keyword     vDeclaration      mut const type pub
+syn keyword     vDeclType         struct interface enum nextgroup=vIdentifier skipwhite skipempty
+
+hi def link     vDirective        Statement
+hi def link     vDeclaration      Keyword
+hi def link     vDeclType         Keyword
+
+syn match       vIdentifier       contains=vIdentifierPrime "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
+
+hi def link     vIdentifierPrime  vIdentifier
+hi def link     vIdentifier       Identifier
+
+" Predefined types
+syn keyword     vType             bool string map
+syn keyword     vSignedInts       rune int i8 i16 i32 i64
+syn keyword     vUnsignedInts     byte u8 u16 u32 u64
+syn keyword     vFloats           f32 f64
+syn keyword     vPtr              byteptr voidptr
+
+hi def link     vType             Type
+hi def link     vSignedInts       Type
+hi def link     vUnsignedInts     Type
+hi def link     vFloats           Type
+hi def link     vComplexes        Type
+
+" Functions
+syn match       vDeclaration      /^fn\>/
+
+hi def link     vDeclaration      Keyword
 
 " Comments
 syn keyword     vTodo             contained TODO FIXME XXX BUG
