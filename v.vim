@@ -79,3 +79,39 @@ syn region      vCharacter        start=+`+ skip=+\\\\\|\\'+ end=+`+ contains=@v
 
 hi def link     vCharacter        Character
 
+
+" Regions
+syn region      vBlock            start="{" end="}" transparent fold
+syn region      vParen            start='(' end=')' transparent
+
+" Integers
+syn match       vDecimalInt       "\<\d\+\([Ee]\d\+\)\?\>"
+syn match       vHexadecimalInt   "\<0x\x\+\>"
+syn match       vOctalInt         "\<0\o\+\>"
+syn match       vOctalError       "\<0\o*[89]\d*\>"
+
+hi def link     vDecimalInt       Integer
+hi def link     vHexadecimalInt   Integer
+hi def link     vOctalInt         Integer
+hi def link     Integer           Number
+
+" Floating point
+syn match       vFloat            "\<\d\+\.\d*\([Ee][-+]\d\+\)\?\>"
+syn match       vFloat            "\<\.\d\+\([Ee][-+]\d\+\)\?\>"
+syn match       vFloat            "\<\d\+[Ee][-+]\d\+\>"
+
+hi def link     vFloat            Float
+
+" Imaginary literals
+syn match       vImaginary        "\<\d\+i\>"
+syn match       vImaginary        "\<\d\+\.\d*\([Ee][-+]\d\+\)\?i\>"
+syn match       vImaginary        "\<\.\d\+\([Ee][-+]\d\+\)\?i\>"
+syn match       vImaginary        "\<\d\+[Ee][-+]\d\+i\>"
+
+hi def link     vImaginary        Number
+
+syn sync minlines=500
+
+let b:current_syntax = 'v'
+
+" vim: sw=2 sts=2 et
