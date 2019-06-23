@@ -10,7 +10,27 @@ syn keyword     vDeclType         struct interface enum nextgroup=vIdentifier sk
 
 hi def link     vDirective        Statement
 hi def link     vDeclaration      Keyword
-hi def link     vDeclType         Keyword
+hi def link     vDeclType         Structure
+
+syn region      vCCall            start="^\s*#" end="$" 
+syn region      vCIncluded        start=+"+ skip=+\\\\\|\\"+ end=+"+ display contained 
+syn match       vCIncluded        "<[^>]*>" display contained
+syn match       vCInclude         "^\s*\zs\(%:\|#\)\s*include\>\s*["<]" contains=vCIncluded display
+
+hi def link     vCCall            PreProc
+hi def link     vCIncluded        String
+hi def link     vCInclude         Include
+
+" Keywords within functions
+syn keyword     vStatement        defer go goto return break continue
+syn keyword     vConditional      if else switch select in or
+syn keyword     vLabel            case default
+syn keyword     vRepeat           for
+
+hi def link     vStatement        Statement
+hi def link     vConditional      Conditional
+hi def link     vLabel            Label
+hi def link     vRepeat           Repeat
 
 syn match       vIdentifier       contains=vIdentifierPrime "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
 
