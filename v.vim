@@ -22,13 +22,17 @@ syn keyword     vType             bool string map
 syn keyword     vSignedInts       rune int i8 i16 i32 i64
 syn keyword     vUnsignedInts     byte u8 u16 u32 u64
 syn keyword     vFloats           f32 f64
+syn keyword     vDouble           double
 syn keyword     vPtr              byteptr voidptr
+syn keyword     vBooleans         true false
 
 hi def link     vType             Type
 hi def link     vSignedInts       Type
 hi def link     vUnsignedInts     Type
 hi def link     vFloats           Type
-hi def link     vComplexes        Type
+hi def link     vDouble           Type
+hi def link     vPtr              Type
+hi def link     vBooleans         Boolean
 
 " Functions
 syn match       vDeclaration      /^fn\>/
